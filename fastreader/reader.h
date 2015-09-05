@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QFont>
 #include <QTimer>
+#include <QLabel>
 
 namespace Ui {
 class Reader;
@@ -32,8 +33,11 @@ private:
 	Ui::Reader *ui;
 	QFont font;
 	QTimer *timer;
-	void startTimer();
+	void startTimer(int speed);
 	QString text;
+	QLabel *label;
+	long long int wordLenth;
+	long long int wordIndex;
 	short int wordLocation;
 };
 
