@@ -29,6 +29,8 @@ private slots:
 
 	void on_openFile_clicked();
 
+	void on_stop_clicked();
+
 private:
 	Ui::Reader *ui;
 	QFont font;
@@ -36,9 +38,12 @@ private:
 	void startTimer(int speed);
 	QString text;
 	QLabel *label;
+	int speed;
+	QLabel *getLocation(short locationIndex);
 	long long int wordLenth;
 	long long int wordIndex;
-	short int wordLocation;
+	short wordLocation;
+	void updateFont();
 };
 
 #endif // READER_H

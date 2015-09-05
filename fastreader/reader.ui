@@ -14,17 +14,113 @@
    <string>Reader</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="2">
-    <widget class="QLabel" name="label_3">
+   <item row="2" column="0" rowspan="5">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>120</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="8" column="0">
+    <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>TextLabel</string>
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>79</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="openFile">
+     <property name="text">
+      <string>Open File</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>121</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="1">
+    <widget class="QSpinBox" name="setSpeed">
+     <property name="toolTip">
+      <string>Speed</string>
+     </property>
+     <property name="statusTip">
+      <string>Speed</string>
+     </property>
+     <property name="maximum">
+      <number>999</number>
+     </property>
+     <property name="value">
+      <number>500</number>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>78</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="start">
+     <property name="text">
+      <string>Start</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </item>
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>TextLabel</string>
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </item>
@@ -48,7 +144,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2" rowspan="4">
+   <item row="2" column="2" rowspan="5">
     <spacer name="horizontalSpacer_4">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -61,93 +157,10 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="1">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>79</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="0" rowspan="4">
-    <spacer name="horizontalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>120</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="4" column="1">
-    <widget class="QPushButton" name="openFile">
+    <widget class="QPushButton" name="stop">
      <property name="text">
-      <string>Open File</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="2">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>TextLabel</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>121</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="6" column="1">
-    <spacer name="verticalSpacer_4">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>78</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="5" column="1">
-    <widget class="QSpinBox" name="setSpeed">
-     <property name="toolTip">
-      <string>Speed</string>
-     </property>
-     <property name="statusTip">
-      <string>Speed</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="start">
-     <property name="text">
-      <string>Start</string>
+      <string>Sto&amp;p</string>
      </property>
     </widget>
    </item>

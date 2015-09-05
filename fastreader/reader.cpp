@@ -6,9 +6,11 @@
 #include <QTextStream>
 #include <QFileDialog>
 #include <QDebug>
+#include <QFontDialog>
 
-#define YYY 5
-#define DEFAULT_SPEED 200
+#define YYY 200
+#define DEFAULT_SPEED 500
+#define DEFAULT_FONT_SIZE 20
 
 Reader::Reader(QWidget *parent) :
 	QWidget(parent),
@@ -21,6 +23,10 @@ Reader::Reader(QWidget *parent) :
 	timer = new QTimer(this);
 	wordLocation = 0;
 	wordIndex = 0;
+	speed = DEFAULT_SPEED;
+//	ui->setSpeed->setValue();
+	font.setPointSize(DEFAULT_FONT_SIZE);
+	updateFont();
 	connect(timer, SIGNAL(timeout()), this, SLOT(timerUpdate()));
 }
 
@@ -31,51 +37,42 @@ Reader::~Reader()
 
 void Reader::timerUpdate()
 {
-	switch (wordLocation) {
-	case 0:
-		label = ui->label;
-		break;
-	case 1:
-		label = ui->label_2;
-		break;
-	case 2:
-		label = ui->label_3;
-		break;
-	case 3:
-		label = ui->label_4;
-		break;
-	default:
-		return;
-	}
 	if (wordIndex >= wordLenth) {
 		timer->stop();
 		return;
 	}
+	label = getLocation(wordLocation);
 	if (wordIndex % YYY == 0) {
 		label->setText("");
+		++wordLocation;
 		if (wordLocation > 3)
 			wordLocation = 0;
-		else
-			wordLocation++;
+		label = getLocation(wordLocation);
+
 	}
 	label->setText(text.at(wordIndex++));
 }
 
 void Reader::on_setFont_clicked()
 {
-
+	bool ok;
+	font = QFontDialog::getFont(&ok, this);
+	if (ok)
+		updateFont();
 }
 
 void Reader::on_setSpeed_valueChanged(int arg1)
 {
-
+	speed = arg1;
+	if (timer->isActive())
+		startTimer(speed);
 }
 
 void Reader::on_start_clicked()
 {
 	if (text.isEmpty())
 		return;
-	startTimer(DEFAULT_SPEED);
+	startTimer(speed);
 	timerUpdate();
 }
 
@@ -99,4 +96,33 @@ void Reader::on_openFile_clicked()
 void Reader::startTimer(int speed)
 {
 	timer->start(speed);
+}
+
+QLabel *Reader::getLocation(short locationIndex)
+{
+	switch (locationIndex) {
+	case 0:
+		return ui->label;
+	case 1:
+		return ui->label_2;
+	case 2:
+		return ui->label_3;
+	case 3:
+		return ui->label_4;
+	default:
+		return NULL;
+	}
+}
+
+void Reader::updateFont()
+{
+	ui->label_4->setFont(font);
+	ui->label_2->setFont(font);
+	ui->label_3->setFont(font);
+	ui->label->setFont(font);
+}
+
+void Reader::on_stop_clicked()
+{
+    timer->stop();
 }
