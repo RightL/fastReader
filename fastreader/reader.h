@@ -5,6 +5,9 @@
 #include <QFont>
 #include <QTimer>
 #include <QLabel>
+#include <QEvent>
+#include <QKeyEvent>
+
 
 namespace Ui {
 class Reader;
@@ -17,6 +20,9 @@ class Reader : public QWidget
 public:
 	explicit Reader(QWidget *parent = 0);
 	~Reader();
+
+protected:
+    bool eventFilter(QObject *object, QEvent *event);
 
 private slots:
 	void timerUpdate();
@@ -31,10 +37,16 @@ private slots:
 
 	void on_stop_clicked();
 
+	void on_bgColor_clicked();
+
+	void on_fontColor_clicked();
+
 private:
 	Ui::Reader *ui;
 	QFont font;
 	QTimer *timer;
+	void goBack();
+	void handleKeyPressed(QKeyEvent *event);
 	void startTimer(int speed);
 	QString text;
 	QLabel *label;

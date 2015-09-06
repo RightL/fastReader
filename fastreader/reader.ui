@@ -14,7 +14,14 @@
    <string>Reader</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="2" column="0" rowspan="5">
+   <item row="3" column="1">
+    <widget class="QPushButton" name="fontColor">
+     <property name="text">
+      <string>Set Font Color</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" rowspan="7">
     <spacer name="horizontalSpacer_3">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -27,12 +34,45 @@
      </property>
     </spacer>
    </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="7" column="1">
+    <widget class="QPushButton" name="openFile">
      <property name="text">
-      <string/>
+      <string>Open File</string>
      </property>
     </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="start">
+     <property name="text">
+      <string>Start</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>121</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="9" column="1">
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>78</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="1" column="1">
     <spacer name="verticalSpacer_3">
@@ -47,27 +87,14 @@
      </property>
     </spacer>
    </item>
-   <item row="5" column="1">
-    <widget class="QPushButton" name="openFile">
+   <item row="10" column="0">
+    <widget class="QLabel" name="label_2">
      <property name="text">
-      <string>Open File</string>
+      <string/>
      </property>
     </widget>
    </item>
    <item row="8" column="1">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>121</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="6" column="1">
     <widget class="QSpinBox" name="setSpeed">
      <property name="toolTip">
       <string>Speed</string>
@@ -80,47 +107,6 @@
      </property>
      <property name="value">
       <number>500</number>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <spacer name="verticalSpacer_4">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>78</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="start">
-     <property name="text">
-      <string>Start</string>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="2">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string/>
      </property>
     </widget>
    </item>
@@ -137,6 +123,33 @@
      </property>
     </spacer>
    </item>
+   <item row="10" column="2">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string/>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
    <item row="2" column="1">
     <widget class="QPushButton" name="setFont">
      <property name="text">
@@ -144,7 +157,14 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2" rowspan="5">
+   <item row="6" column="1">
+    <widget class="QPushButton" name="stop">
+     <property name="text">
+      <string>Sto&amp;p</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" rowspan="7">
     <spacer name="horizontalSpacer_4">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -158,9 +178,9 @@
     </spacer>
    </item>
    <item row="4" column="1">
-    <widget class="QPushButton" name="stop">
+    <widget class="QPushButton" name="bgColor">
      <property name="text">
-      <string>Sto&amp;p</string>
+      <string>Set Background Color</string>
      </property>
     </widget>
    </item>

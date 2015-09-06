@@ -6,10 +6,12 @@
 #include <QTextStream>
 #include <QFileDialog>
 #include <QDebug>
+#include <QColor>
+#include <QColorDialog>
 #include <QFontDialog>
 
 #define YYY 200
-#define DEFAULT_SPEED 500
+#define DEFAULT_SPEED 200
 #define DEFAULT_FONT_SIZE 20
 
 Reader::Reader(QWidget *parent) :
@@ -24,15 +26,52 @@ Reader::Reader(QWidget *parent) :
 	wordLocation = 0;
 	wordIndex = 0;
 	speed = DEFAULT_SPEED;
-//	ui->setSpeed->setValue();
 	font.setPointSize(DEFAULT_FONT_SIZE);
 	updateFont();
 	connect(timer, SIGNAL(timeout()), this, SLOT(timerUpdate()));
+	ui->setSpeed->setValue(DEFAULT_SPEED);
+	this->installEventFilter(this);
+	this->setFocus();
+
 }
 
 Reader::~Reader()
 {
 	delete ui;
+}
+
+bool Reader::eventFilter(QObject *object, QEvent *event)
+{
+    if (event->type() == QEvent::KeyPress) {
+	handleKeyPressed((QKeyEvent *)event);
+	return true;
+    } else {
+	return QObject::eventFilter(object, event);
+    }
+}
+
+void Reader::handleKeyPressed(QKeyEvent *event)
+{
+    switch (event->key()) {
+    case Qt::Key_Space:
+	    if (timer->isActive()) {
+		    timer->stop();
+	    } else {
+		    on_start_clicked();
+	    }
+	break;
+    case Qt::Key_Left:
+	     goBack();
+	break;
+    case Qt::Key_Up:
+	    ui->setSpeed->setValue(ui->setSpeed->value() + 1);
+	break;
+    case Qt::Key_Down:
+	    ui->setSpeed->setValue(ui->setSpeed->value() - 1);
+	break;
+    default:
+	break;
+    }
 }
 
 void Reader::timerUpdate()
@@ -43,7 +82,7 @@ void Reader::timerUpdate()
 	}
 	label = getLocation(wordLocation);
 	if (wordIndex % YYY == 0) {
-		label->setText("");
+		label->setText("@");
 		++wordLocation;
 		if (wordLocation > 3)
 			wordLocation = 0;
@@ -59,6 +98,9 @@ void Reader::on_setFont_clicked()
 	font = QFontDialog::getFont(&ok, this);
 	if (ok)
 		updateFont();
+	this->setFocus();
+
+
 }
 
 void Reader::on_setSpeed_valueChanged(int arg1)
@@ -66,6 +108,7 @@ void Reader::on_setSpeed_valueChanged(int arg1)
 	speed = arg1;
 	if (timer->isActive())
 		startTimer(speed);
+	this->setFocus();
 }
 
 void Reader::on_start_clicked()
@@ -74,6 +117,7 @@ void Reader::on_start_clicked()
 		return;
 	startTimer(speed);
 	timerUpdate();
+	this->setFocus();
 }
 
 void Reader::on_openFile_clicked()
@@ -91,6 +135,7 @@ void Reader::on_openFile_clicked()
 		text.append(in.readAll());
 	file.close();
 	wordLenth = text.size();
+	this->setFocus();
 }
 
 void Reader::startTimer(int speed)
@@ -125,4 +170,34 @@ void Reader::updateFont()
 void Reader::on_stop_clicked()
 {
     timer->stop();
+    this->setFocus();
+}
+
+void Reader::on_bgColor_clicked()
+{
+	QPalette p = this->palette();
+	p.setColor(QPalette::Window,
+		   QColorDialog::getColor(Qt::black, this, tr("Choose a color")));
+	this->setPalette(p);
+	this->setFocus();
+}
+
+void Reader::on_fontColor_clicked()
+{
+	QPalette p;
+	p.setColor(QPalette::WindowText,
+		   QColorDialog::getColor(Qt::black, this, tr("Choose a color")));
+	ui->label_4->setPalette(p);
+	ui->label_2->setPalette(p);
+	ui->label_3->setPalette(p);
+	ui->label->setPalette(p);
+	this->setFocus();
+}
+
+void Reader::goBack()
+{
+//	timer->stop();
+	if (wordIndex > 1)
+		wordIndex--;
+//	timer->start();
 }
