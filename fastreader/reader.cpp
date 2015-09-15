@@ -10,7 +10,7 @@
 #include <QColorDialog>
 #include <QFontDialog>
 
-#define YYY 200
+#define YYY 100
 #define DEFAULT_SPEED 200
 #define DEFAULT_FONT_SIZE 20
 
